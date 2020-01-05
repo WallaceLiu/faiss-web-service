@@ -25,7 +25,7 @@ class FaissIndex(object):
 
     def __search__(self, ids, vectors, k):
         def neighbor_dict(id_, score):
-            return {'id': long(id_), 'score': float(score)}
+            return {'id': int(id_), 'score': float(score)}
 
         def result_dict(id_, vector, neighbors):
             return {'id': id_, 'vector': vector.tolist(), 'neighbors': neighbors}
