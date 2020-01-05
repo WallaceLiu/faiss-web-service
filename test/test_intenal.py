@@ -2,6 +2,7 @@ import unittest
 from flask import Flask
 from src.internal.blueprint import blueprint as InternalBlueprint
 
+
 class TestInternal(unittest.TestCase):
 
     def setUp(self):

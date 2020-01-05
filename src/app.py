@@ -1,7 +1,7 @@
 from flask import Flask
 
-from internal.blueprint import blueprint as InternalBlueprint
-from faiss_index.blueprint import blueprint as FaissIndexBlueprint
+from src.internal.blueprint import blueprint as InternalBlueprint
+from src.faiss_index.blueprint import blueprint as FaissIndexBlueprint
 
 app = Flask(__name__)
 app.config.from_object('config')

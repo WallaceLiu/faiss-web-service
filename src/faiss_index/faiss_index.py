@@ -1,6 +1,7 @@
 import faiss
 import numpy as np
 
+
 class FaissIndex(object):
 
     def __init__(self, index, id_to_vector):
@@ -24,10 +25,10 @@ class FaissIndex(object):
 
     def __search__(self, ids, vectors, k):
         def neighbor_dict(id_, score):
-            return { 'id': long(id_), 'score': float(score) }
+            return {'id': long(id_), 'score': float(score)}
 
         def result_dict(id_, vector, neighbors):
-            return { 'id': id_, 'vector': vector.tolist(), 'neighbors': neighbors }
+            return {'id': id_, 'vector': vector.tolist(), 'neighbors': neighbors}
 
         results = []
 
