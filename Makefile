@@ -20,7 +20,7 @@ run-%:
 		--rm \
 		--tty \
 		--interactive \
-		--volume $(PWD):/opt/faiss-web-service \
+		--volume $(PWD):/Users/liuning11/project/faiss-web-service \
 		--publish 5000:5000 \
 		$(DOCKER_IMAGE) $*
 
@@ -29,7 +29,7 @@ test:
 		--rm \
 		--tty \
 		--interactive \
-		--volume $(PWD):/opt/faiss-web-service \
+		--volume $(PWD):/Users/liuning11/project/faiss-web-service \
 		--entrypoint bash \
 		$(DOCKER_IMAGE) -c "python -m unittest discover"
 
