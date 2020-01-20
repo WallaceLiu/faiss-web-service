@@ -1,0 +1,18 @@
+#!/bin/bash
+source $(dirname "$0")/config.sh $1
+echo "container_name: $CONTAINER_NAME"
+echo "port: $PORT"
+
+ROOT="$(pwd)/$(dirname "$0")"
+
+mkdir -p "${ROOT}/log"
+mkdir -p "${ROOT}/data"
+
+docker run -d --name $CONTAINER_NAME -it \
+         --network daangn-net \
+         -p $PORT:50051 \
+         -v $(pwd):/app \
+         --volumes-from aws-config \
+         daangn/faiss-server server.py $DIM --log "log/${CONTAINER_NAME}.log" \
+           --save-path $SAVE_PATH \
+           --debug $ADDTIONAL

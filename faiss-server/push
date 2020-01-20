@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e
+
+IMAGE="daangn/faiss-server"
+VERSION=$1
+if [ -z $VERSION ]; then
+  VERSION="v`date +%Y%m%d`"
+fi
+echo "VERSION: $VERSION"
+
+./build
+docker tag $IMAGE:latest $IMAGE:$VERSION
+docker push $IMAGE:$VERSION
+docker push $IMAGE:latest 
+git tag $VERSION
+git push --tags

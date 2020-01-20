@@ -1,0 +1,14 @@
+#!/bin/bash
+source config.sh $1
+ROOT="$(pwd)/$(dirname "$0")"
+
+mkdir -p "${ROOT}/embeddings"
+mkdir -p "${ROOT}/models"
+mkdir -p "${ROOT}/log"
+
+docker run -d --name $CONTAINER_NAME -it -p $PORT:50051 \
+         -v "${ROOT}/log":/app/log \
+         --volumes-from aws-config \
+         --network daangn-net \
+         daangn/faiss-image-server server.py --log "log/${CONTAINER_NAME}.log" \
+           $ARGS

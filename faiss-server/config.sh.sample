@@ -1,0 +1,13 @@
+#!/bin/bash
+# rename this to config.sh
+OUTPUT_PATH="./lib" # your ruby library directory
+CONTAINER_NAME=$1   # docker container name and faiss-server name
+
+if [ $CONTAINER_NAME == 'faiss-server' ]; then
+  PORT=50051  # grpc port
+  DIM=100     # embedding dimension
+# another faiss-server
+elif [ $CONTAINER_NAME == 'faiss-image-server' ]; then
+  PORT=50052
+  DIM=200
+fi

@@ -1,0 +1,12 @@
+#!/bin/bash
+CONTAINER_NAME=$1
+echo "container_name: $CONTAINER_NAME"
+CONTAINER_ID=$(docker ps -aqf "name=$CONTAINER_NAME")
+CMD=$2
+
+if [ $CMD == 'test' ]; then
+  docker exec -it $CONTAINER_ID python client.py "${@:2}" --dim=$DIM
+else
+  echo $CMD
+  docker exec -it $CONTAINER_ID python client.py "${@:2}"
+fi
