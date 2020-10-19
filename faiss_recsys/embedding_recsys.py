@@ -46,6 +46,7 @@ def create_faiss_model(item_embedding, item_list, faiss_path, size=128, mode="tr
     elif mode == "update":
         index_id = faiss.read_index(faiss_path)
     index_id.add_with_ids(item_embedding, ids)
+
     # index保存
     faiss.write_index(index_id, faiss_path)
 

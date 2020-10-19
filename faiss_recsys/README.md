@@ -1,5 +1,7 @@
 # recsys_faiss
-一个基于 fasttext + faiss + flask的商品内容相关推荐接口实现，使用nginx+uwsgi+flask封装faiss检索接口，用于在线embedding召回和商品详情页相关推荐
+一个基于 fasttext + faiss + flask的商品内容相关推荐接口实现，使用nginx+uwsgi+flask封装faiss检索接口，
+
+用于在线embedding召回和商品详情页相关推荐
 
 #### 商品详情页效果图
 将模型部署应用

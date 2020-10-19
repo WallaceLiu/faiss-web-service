@@ -1,7 +1,7 @@
 import faiss
 import numpy
 from scipy.sparse import coo_matrix
-from sklearn.decomposition import NMF
+from sklearn.decomposition import NMF  # non-negative matrix factorizatio
 from flask import Flask, jsonify
 
 # constants
