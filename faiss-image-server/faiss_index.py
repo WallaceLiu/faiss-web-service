@@ -32,6 +32,7 @@ class FaissIndex:
 
     def restore(self, filepath):
         self.index2 = faiss.read_index(filepath)
+        # self.index2
 
     def save(self, filepath):
         pass

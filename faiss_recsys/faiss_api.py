@@ -33,24 +33,24 @@ def check():
 def faiss_search(spu, n_items):
     tim_str = datetime.datetime.now().strftime("%Y%m%d")
     global model_update_time, index
-    
+
     try:
         if tim_str != model_update_time:
             print("重新读取磁盘模型文件")
             model_update_time = tim_str
-        
+
             index = faiss.read_index(faiss_model_path)
             D, I = index.search(index.reconstruct(spu).reshape(1, -1), n_items + 1)
             result = {spu_index: round(score, 4) for spu_index, score in zip(I.tolist()[0], D.tolist()[0])
-                    if spu_index != spu}
+                      if spu_index != spu}
         else:
             print("读取缓存模型文件")
             D, I = index.search(index.reconstruct(spu).reshape(1, -1), n_items + 1)
             result = {spu_index: round(score, 4) for spu_index, score in zip(I.tolist()[0], D.tolist()[0])
-                    if spu_index != spu}
+                      if spu_index != spu}
     except Exception as e:
         result = []
-        
+
     return result
 
 
